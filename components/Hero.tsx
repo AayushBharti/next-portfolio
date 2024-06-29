@@ -3,7 +3,7 @@ import { Spotlight } from './ui/Spotlight';
 import { TextGenerateEffect } from './ui/TextGenerateEffect';
 import MagicButton from './ui/MagicButton';
 import { FaLocationArrow } from 'react-icons/fa';
-import { HoverBorderGradient } from './ui/hoverBorderGradient';
+import { HoverBorderGradient } from './ui/HoverBorderGradient';
 
 
 const Hero = () => {
@@ -46,6 +46,7 @@ const Hero = () => {
           </a>
         </div>
       </div>
+      
     </div>
   );
 };
