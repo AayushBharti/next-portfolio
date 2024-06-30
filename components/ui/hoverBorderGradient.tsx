@@ -13,6 +13,7 @@ export function HoverBorderGradient({
   as: Tag = 'button',
   duration = 1,
   clockwise = true,
+  handleClick,
   ...props
 }: React.PropsWithChildren<
   {
@@ -21,6 +22,7 @@ export function HoverBorderGradient({
     className?: string;
     duration?: number;
     clockwise?: boolean;
+    handleClick?: () => void;
   } & React.HTMLAttributes<HTMLElement>
 >) {
   const [hovered, setHovered] = useState<boolean>(false);
