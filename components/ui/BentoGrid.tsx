@@ -1,4 +1,4 @@
-'use client';
+'use client'; //becaue we have used useState
 import { useState } from 'react';
 import { IoCopyOutline } from 'react-icons/io5';
 
@@ -57,8 +57,8 @@ export const BentoGridItem = ({
   const [copied, setCopied] = useState(false);
 
   const defaultOptions = {
-    loop: copied,
-    autoplay: copied,
+    loop: false,
+    autoplay: true,
     animationData: animationData,
     rendererSettings: {
       preserveAspectRatio: 'xMidYMid slice',
@@ -68,6 +68,9 @@ export const BentoGridItem = ({
   const handleCopy = () => {
     navigator.clipboard.writeText('iaayushbharti@gmail.com');
     setCopied(true);
+    setTimeout(() => {
+      setCopied(false);
+    }, 5000);
   };
 
   return (
@@ -99,12 +102,8 @@ export const BentoGridItem = ({
             />
           )}
         </div>
-        {id === 6 && (
-          // add background animation , remove the p tag
-          <BackgroundGradientAnimation>
-            {/* <div className='absolute z-50 inset-0 flex items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl'></div> */}
-          </BackgroundGradientAnimation>
-        )}
+
+        {id === 6 && <BackgroundGradientAnimation />}
 
         <div
           className={cn(
@@ -151,13 +150,12 @@ export const BentoGridItem = ({
           )}
           {id === 6 && (
             <div className='mt-5 relative'>
-              <div className={`absolute -bottom-5 right-0 ${copied ? 'block' : 'block'}`}>
-                {/* <img src='/confetti.gif' alt='confetti' /> */}
-                <Lottie options={defaultOptions} height={200} width={400} />
+              <div className={`absolute -bottom-5 right-0 `}>
+                {copied && <Lottie options={defaultOptions} height={200} width={400} />}
               </div>
 
               <MagicButton
-                title={copied ? 'Email is Copied!' : 'Copy my email address'}
+                title={copied ? 'Email Copied!' : 'Copy my email address'}
                 icon={<IoCopyOutline />}
                 position='left'
                 handleClick={handleCopy}
