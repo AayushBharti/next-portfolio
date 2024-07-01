@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { projects } from '@/data';
 import React from 'react';
 import { PinContainer } from './ui/3d-Pin';
@@ -16,11 +17,11 @@ const RecentProjects = () => {
             className='sm:h-[41rem] h-[32rem] lg:min-h-[32.5rem] flex items-center justify-center sm:w-[570px] w-[80vw]'
           >
             <PinContainer title={link} href={link}>
-              <div className='relative flex items-center justify-center sm:w-[500px] w-[75vw] overflow-hidden sm:h-[44vh] h-[30vh] mb-10'>
+              <div className='relative flex items-center justify-center sm:w-[500px] w-[75vw] overflow-hidden sm:h-[44vh] h-[30vh] mb-10 max-h-[350px]'>
                 <div className='relative w-full h-full overflow-hidden lg:rounded-3xl bg-[#13162D]'>
-                  <img src='/bg.png' alt='bg-img' />
+                  <Image src='/bg.png' alt='bg-img' layout='fill' objectFit='cover' />
                 </div>
-                <img src={img} alt='cover' className='z-10 absolute bottom-0' />
+                <Image src={img} alt='cover' className='z-10 absolute bottom-0' width={450} height={450}/>
               </div>
               <h1 className='font-bold lg:text-2xl md:text-xl text-base line-clamp-1'>{title}</h1>
 
@@ -38,7 +39,7 @@ const RecentProjects = () => {
                         transform: `translateX(-${5 * i + 2}px)`,
                       }}
                     >
-                      <img src={icon} alt='img' className='p-2' />
+                      <Image src={icon} alt='img' className='p-2'  width={40} height={40} />
                     </div>
                   ))}
                 </div>
